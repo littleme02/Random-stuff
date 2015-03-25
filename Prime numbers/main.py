@@ -1,78 +1,44 @@
+# coding=utf-8
 __author__ = 'LittleMe'
 import csv
 
-targetprimeamount = 20000
-numbertotest = 7
+target_prime_amount = 20000
+number_to_test = 7
 
-modul = 0
-primes = ["Value"]
+modulus = 0
+primes = [3, 5]
 
-primes.append(3)
-primes.append(5)
-primesfound = 2
+primes_found = 2
 
+while target_prime_amount > primes_found:
 
+    prime_to_test = 1
+    primes_found = len(primes) - 1
 
+    print("primes found  {}".format(primes_found))
 
-
-while targetprimeamount > primesfound:
-    done = 0
-    primetotest = 1
-    primesfound = len(primes)-1
-
-    print(("primes found  " + str(primesfound)), end ="\r")
-
-    while done == 0:
-
-
-
-
-
-        if primetotest > primesfound:
-            done = 1
-
-            primes.append(numbertotest)
-
-            numbertotest += 2
-
-            #print("tes")
+    while True:
+        if prime_to_test > primes_found:
+            primes.append(number_to_test)
+            number_to_test += 2
             break
-
-
-        elif numbertotest == primes[primetotest]:
-
-
-            #print("ive seeen this before")
-            numbertotest += 2
-            done = 1
+        elif number_to_test == primes[prime_to_test]:
+            number_to_test += 2
             break
-
         else:
-            #print("deviding   " + str(numbertotest) + "  by  " + str(primes[primetotest]))
-
-            if numbertotest % primes[primetotest] == 0:
-
-                #print(str(numbertotest) + "   not")
-                done = 1
-                numbertotest += 2
+            # print('dividing {} by {}'.format(number_to_test,
+            #                                  primes[prime_to_test]))
+            if number_to_test % primes[prime_to_test] == 0:
+                # print("{} ".format(number_to_test))
+                number_to_test += 2
 
             else:
-                primetotest += 1
+                prime_to_test += 1
+                # print(primes)
+                # for x in range (0, len(primes)):
+                # print(primes[x])
 
-
-
-
-
-#print(primes)
-
-
-#for x in range (0, len(primes)):
-    #print(primes[x])
-
-
-
-with open('primes.csv', 'w',encoding='utf-8', newline='') as fp:
+with open('primes.csv', 'w', encoding='utf-8', newline='') as fp:
     a = csv.writer(fp, delimiter=',')
-    a.writerows([primes])
-
-
+    a.writerow(['Value'])
+    a.writerow(primes)
